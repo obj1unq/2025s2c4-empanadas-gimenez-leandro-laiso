@@ -1,0 +1,13 @@
+import empleados.*
+
+test "Punto 1" {
+    baigorria.registrarVentas(200)
+    galvan.cambiarSueldo(20000)
+    assert.equals(3000, baigorria.sueldoACobrar())
+    assert.equals(20000, galvan.sueldoACobrar())
+
+    gimenez.pagarSueldo(galvan)
+    gimenez.pagarSueldo(baigorria)
+    assert.equals(277000, gimenez.fondoActual())
+
+}
