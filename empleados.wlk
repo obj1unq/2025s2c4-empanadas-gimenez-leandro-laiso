@@ -22,12 +22,7 @@ object galvan {
 
     method cobrar() {
         dinero += sueldo
-        if (dinero >= deuda) {
-            self.pagarDeudas(deuda)
-        }
-        else {
-            self.pagarDeudas(dinero)
-        }
+        self.pagarDeudas()
     }
 
     method cambiarSueldo(nuevoSueldo) {
@@ -48,9 +43,15 @@ object galvan {
         deuda += cantidadAAumentar
     }
 
-    method pagarDeudas(cantidadAPagar) {
-        deuda -= cantidadAPagar
-        dinero -= cantidadAPagar
+    method pagarDeudas() {
+        if (dinero >= deuda) {
+            dinero -= deuda
+            deuda = 0
+        }
+        else {
+            deuda -= dinero
+            dinero = 0
+        }
     }
 
 
