@@ -1,0 +1,25 @@
+import empleados.*
+
+test "Punto 3 - Manejo fino de las finanzas de Galván" {
+
+    assert.equals(15000, galvan.sueldoACobrar())
+    assert.equals(0, galvan.dinero())
+    assert.equals(0, galvan.deuda())
+
+    galvan.gastar(5000)
+    assert.equals(0, galvan.dinero())
+    assert.equals(5000, galvan.deuda())
+
+    galvan.gastar(15000)
+    galvan.gastar(7000)
+    assert.equals(0, galvan.dinero())
+    assert.equals(27000, galvan.deuda())
+
+    gimenez.pagarSueldo(galvan)
+    assert.equals(0, galvan.dinero())
+    assert.equals(12000, galvan.deuda())
+
+    gimenez.pagarSueldo(galvan)
+    assert.equals(3000, galvan.dinero())
+    assert.equals(0, galvan.deuda())
+}
